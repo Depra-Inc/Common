@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Depra.Common.Exceptions
+namespace Depra.Common.Exceptions.Types
 {
     /// <summary>
     /// The exception that is thrown when the enum value is not supported.

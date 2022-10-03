@@ -1,6 +1,6 @@
 using System;
 
-namespace Depra.Common.Exceptions
+namespace Depra.Common.Exceptions.Types
 {
     public class InitializationException : Exception
     {

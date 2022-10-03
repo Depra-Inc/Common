@@ -1,11 +1,12 @@
 using System;
+using Depra.Common.Exceptions.Types;
 
-namespace Depra.Common.Exceptions
+namespace Depra.Common.Exceptions.Helpers
 {
     /// <summary>
     /// Exception helper class.
     /// </summary>
-    public static class ExceptionHelper
+    internal static class ExceptionHelper
     {
         /// <summary>
         /// Throws NullReferenceException if true with message.
