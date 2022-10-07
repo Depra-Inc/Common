@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>Depra.Common.Extensions</AssemblyName>
+        <RootNamespace>Depra.Common.Extensions</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Exceptions\Exceptions.csproj" />
+    </ItemGroup>
+
+</Project>
