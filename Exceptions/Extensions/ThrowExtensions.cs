@@ -75,6 +75,7 @@ namespace Depra.Common.Exceptions.Extensions
         /// <summary>
         /// Throws exception if any of the strings is null or empty.
         /// </summary>
+        /// <remarks>Possible multiple enumeration!</remarks>
         /// <param name="strings">Input.</param>
         /// <returns>Input.</returns>
         public static IEnumerable<string> ThrowIfNullOrEmpty(this IEnumerable<string> strings)
@@ -90,6 +91,7 @@ namespace Depra.Common.Exceptions.Extensions
         /// <summary>
         /// Throws exception if any of the string arguments is null or empty.
         /// </summary>
+        /// <remarks>Possible multiple enumeration!</remarks>
         /// <param name="strings">Input.</param>
         /// <returns>Input.</returns>
         public static IEnumerable<string> ThrowIfNullOrEmptyArgument(this IEnumerable<string> strings)
