@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Depra.Common.Collections.Extensions
+namespace Depra.Common.Extensions
 {
     /// <summary>
     /// <see cref="ICollection{T}"/> extensions.
