@@ -6,6 +6,8 @@
         <IsPackable>false</IsPackable>
 
         <RootNamespace>Depra.Common.Extensions.UnitTests</RootNamespace>
+
+        <AssemblyName>Depra.Common.Extensions.UnitTests</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +16,10 @@
         <PackageReference Include="NUnit" Version="3.13.1" />
         <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
         <PackageReference Include="coverlet.collector" Version="3.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Extensions\Extensions.csproj" />
     </ItemGroup>
 
 </Project>
