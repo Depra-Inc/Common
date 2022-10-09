@@ -15,11 +15,11 @@ namespace Depra.Common.Extensions
 
         public static bool TryDoAsCasted<TCurrent, TCasted>(this TCurrent self, Action<TCasted> callback)
         {
-            if (self is TCasted casted == false)
+            if (!(self is TCasted casted))
             {
                 return false;
             }
-            
+
             callback(casted);
             return true;
         }
