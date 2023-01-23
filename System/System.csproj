@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AssemblyName>Depra.System</AssemblyName>
+        <RootNamespace>Depra.System</RootNamespace>
+    </PropertyGroup>
+
+</Project>
