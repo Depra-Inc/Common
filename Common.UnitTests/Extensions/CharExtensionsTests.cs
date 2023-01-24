@@ -1,11 +1,10 @@
-﻿#nullable enable
-using Depra.Common.Extensions.Text;
+﻿using Depra.Common.Extensions.Text;
 using FluentAssertions;
 using Xunit;
 
 namespace Depra.Common.UnitTests.Extensions
 {
-    public sealed class CharExtensionsTest
+    public sealed class CharExtensionsTests
     {
         [Theory]
         [InlineData('1', '1')]

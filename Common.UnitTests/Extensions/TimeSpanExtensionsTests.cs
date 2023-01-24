@@ -1,5 +1,4 @@
-﻿#nullable enable
-using Depra.Common.Extensions;
+﻿using Depra.Common.Extensions;
 using FluentAssertions;
 using Xunit;
 

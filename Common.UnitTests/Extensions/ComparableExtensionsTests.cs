@@ -1,11 +1,10 @@
-﻿#nullable enable
-using Depra.Common.Extensions;
+﻿using Depra.Common.Extensions;
 using FluentAssertions;
 using Xunit;
 
 namespace Depra.Common.UnitTests.Extensions
 {
-    public sealed class ComparableExtensionsTest
+    public sealed class ComparableExtensionsTests
     {
         [Theory]
         [InlineData(0, 10)]

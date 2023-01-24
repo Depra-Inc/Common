@@ -1,10 +1,9 @@
-﻿#nullable enable
-using Depra.Common.Extensions;
+﻿using Depra.Common.Extensions;
 using Xunit;
 
 namespace Depra.Common.UnitTests.Extensions
 {
-    public class LogicBoolExtensionsTest
+    public sealed class LogicBoolExtensionsTests
     {
         [Theory]
         [InlineData(true, true, true)]

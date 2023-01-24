@@ -1,13 +1,12 @@
-﻿#nullable enable
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Depra.Common.Extensions;
 using Depra.Common.Extensions.Collections;
 using FluentAssertions;
 using Xunit;
 
-namespace Depra.Common.UnitTests.Extensions
+namespace Depra.Common.UnitTests.Extensions.Collections
 {
-    public sealed class DictionaryExtensionsTest
+    public sealed class DictionaryExtensionsTests
     {
         [Fact]
         public void OneOrDefault_ShouldReturnObject_IfKeyExists() =>
