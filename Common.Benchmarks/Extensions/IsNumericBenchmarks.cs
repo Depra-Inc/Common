@@ -1,8 +1,8 @@
 using BenchmarkDotNet.Attributes;
+using Depra.Common.Extensions;
 
-namespace Depra.Common.Extensions.Benchmarks
+namespace Depra.Common.Benchmarks.Extensions
 {
-    [MemoryDiagnoser]
     public class IsNumericBenchmarks
     {
         private readonly int _intValue = 1;

@@ -11,7 +11,7 @@ namespace Depra.Common.Extensions
         /// <summary>
         /// Represents specified object as object of other type using specified <paramref name="map"/> function.
         /// </summary>
-        /// <param name="self"><code>this</code> object.</param>
+        /// <param name="self">This object.</param>
         /// <param name="map">Function that maps <paramref name="self"/> to object of type <typeparamref name="TResult"/>.</param>
         /// <typeparam name="TInput">Type of object to be represented.</typeparam>
         /// <typeparam name="TResult">Type of result object that will represent <paramref name="self"/>.</typeparam>
@@ -25,10 +25,10 @@ namespace Depra.Common.Extensions
         /// <summary>
         /// Performs specified <see cref="Action"/> function on object and returns this object.
         /// </summary>
-        /// <param name="self"><code>this</code> object.</param>
+        /// <param name="self">This object.</param>
         /// <param name="apply">Function that will be applied on <paramref name="self"/> object.</param>
         /// <typeparam name="T">Type of <paramref name="self"/> object.</typeparam>
-        /// <returns><code>this</code> object.</returns>
+        /// <returns>This object.</returns>
         public static T Do<T>(this T self, Action<T> apply)
         {
             apply?.Invoke(self);

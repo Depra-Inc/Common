@@ -8,9 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2C7DC7DB-73C2-42C8-BF73-9429E42D26E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.UnitTests", "Extensions.UnitTests\Extensions.UnitTests.csproj", "{8FBBD9FC-9F19-4D07-A2D0-63B814B4B11E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.UnitTests", "Common.UnitTests\Common.UnitTests.csproj", "{8FBBD9FC-9F19-4D07-A2D0-63B814B4B11E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.Benchmarks", "Extensions.Benchmarks\Extensions.Benchmarks.csproj", "{77D48010-6F3C-4FAF-A22D-D8BF2E9BE156}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Benchmarks", "Common.Benchmarks\Common.Benchmarks.csproj", "{77D48010-6F3C-4FAF-A22D-D8BF2E9BE156}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmarks", "benchmarks", "{63D3E9E5-40F3-4328-9ADB-B216E6C45FA1}"
 EndProject

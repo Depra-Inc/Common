@@ -1,11 +1,13 @@
+#nullable enable
 using System;
+using Depra.Common.Extensions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Depra.Common.Extensions.UnitTests
+namespace Depra.Common.UnitTests.Extensions
 {
     [TestFixture]
-    public class IsNumericTests
+    public sealed class GenericTypeExtensionsTests
     {
         [Test]
         public void WhenCheckingIfValueIsNumeric_AndValueIsInteger_ThenValueIsNumeric()
