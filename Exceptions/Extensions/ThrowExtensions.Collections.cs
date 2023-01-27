@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Depra.Common.Exceptions.Helpers;
 
@@ -6,6 +7,7 @@ namespace Depra.Common.Exceptions.Extensions
 {
     public static partial class ThrowExtensions
     {
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public static IEnumerable<T> ThrowIfEmpty<T>(this IEnumerable<T> objects,
             string exMessage = "Collection is empty!")
         {
@@ -18,6 +20,7 @@ namespace Depra.Common.Exceptions.Extensions
         /// </summary>
         /// <param name="objects">Input.</param>
         /// <returns>Input.</returns>
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public static IEnumerable<T> ThrowIfAnyNull<T>(this IEnumerable<T> objects)
         {
             foreach (var @object in objects)
@@ -33,6 +36,7 @@ namespace Depra.Common.Exceptions.Extensions
         /// </summary>
         /// <param name="objects">Input.</param>
         /// <returns>Input.</returns>
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public static IEnumerable<T> ThrowIfAnyArgumentNull<T>(this IEnumerable<T> objects)
         {
             foreach (var @object in objects)
@@ -49,6 +53,7 @@ namespace Depra.Common.Exceptions.Extensions
         /// <remarks>Possible multiple enumeration!</remarks>
         /// <param name="strings">Input.</param>
         /// <returns>Input.</returns>
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public static IEnumerable<string> ThrowIfNullOrEmpty(this IEnumerable<string> strings)
         {
             foreach (var s in strings)
@@ -65,6 +70,7 @@ namespace Depra.Common.Exceptions.Extensions
         /// <remarks>Possible multiple enumeration!</remarks>
         /// <param name="strings">Input.</param>
         /// <returns>Input.</returns>
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public static IEnumerable<string> ThrowIfNullOrEmptyArgument(this IEnumerable<string> strings)
         {
             foreach (var s in strings)

@@ -11,7 +11,7 @@ namespace Depra.Common.Extensions
         /// <summary>
         /// UTC date format <see cref="string"/>.
         /// </summary>
-        public const string UtcDateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'";
+        public const string UTC_DATE_FORMAT = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'";
 
         /// <summary>
         /// Min value for Sql datetime to save in sql db.
@@ -21,7 +21,7 @@ namespace Depra.Common.Extensions
         /// <summary>
         /// Gets the UTC datetime format for the date.
         /// </summary>
-        public static string ToUtcFormatString(this DateTime date) => date.ToUniversalTime().ToString(UtcDateFormat);
+        public static string ToUtcFormatString(this DateTime date) => date.ToUniversalTime().ToString(UTC_DATE_FORMAT);
 
         /// <summary>
         /// Gets the min value for Sql datetime.

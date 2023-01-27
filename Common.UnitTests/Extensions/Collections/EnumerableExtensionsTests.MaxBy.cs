@@ -1,58 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Depra.Common.Extensions.Collections;
+using FluentAssertions;
 using Xunit;
 
-namespace Depra.Common.UnitTests.Extensions.Collections
+namespace Depra.Common.UnitTests.Extensions.Collections;
+
+public sealed partial class EnumerableExtensionsTests
 {
-    public sealed partial class EnumerableExtensionsTests
+    public class MaxBy
     {
-        public class MaxBy
+        [Fact]
+        [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
+        public void MaxBy_ShouldThrowException()
         {
-            [Fact]
-            public void MaxBy_ShouldThrowException() =>
-                Assert.Throws<ArgumentNullException>(() => ((IEnumerable<Item>)null).MinBy(x => x.Number));
+            // Arrange.
+            var items = (IEnumerable<Item>)null;
 
-            [Fact]
-            public void MaxBy_ShouldThrowException_IfFuncIsNull() =>
-                Assert.Throws<ArgumentNullException>(() => Enumerable.Empty<int>().MinBy<int, Item>(null));
+            // Act.
+            var act = () => EnumerableExtensions.MinBy(items, x => x.Number);
 
-            [Fact]
-            public void MaxBy_ShouldReturnMaxObject()
+            // Assert.
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void MaxBy_ShouldThrowException_IfFuncIsNull()
+        {
+            // Arrange.
+            var items = Enumerable.Empty<int>();
+
+            // Act.
+            var act = () => EnumerableExtensions.MinBy<int, Item>(items, null);
+
+            // Assert.
+            act.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void MaxBy_ShouldReturnMaxObject()
+        {
+            // Arrange.
+            var items = new List<Item>(Enumerable.Range(0, 10).Select(x => new Item(x)));
+
+            // Act.
+            var minValue = items.Max(x => x.Number);
+            var min = EnumerableExtensions.MaxBy(items, x => x.Number);
+
+            // Assert.
+            min.Number.Should().Be(minValue);
+        }
+
+        [Fact]
+        public void MaxBy_ShouldReturnMaxObject_IfIComparable()
+        {
+            // Arrange.
+            var items = new List<Item>(Enumerable.Range(0, 10).Select(x => new Item(x)));
+
+            // Act.
+            var a = items.Max(x => x);
+            var b = EnumerableExtensions.MaxBy(items, x => x);
+
+            // Assert.
+            b.Should().BeSameAs(a);
+        }
+
+        [Fact]
+        public void MaxBy_ShouldReturnCorrectReference()
+        {
+            // Arrange.
+            var secondItem = new Item(3);
+            var items = new List<Item>
             {
-                var items = new List<Item>(Enumerable.Range(0, 10).Select(x => new Item(x)));
+                new Item(3),
+                new Item(2),
+                secondItem
+            };
 
-                var minValue = items.Max(x => x.Number);
-                var min = items.MaxBy(x => x.Number);
+            // Act.
+            var maxItem = EnumerableExtensions.MaxBy(items, x => x.Number);
 
-                Assert.Equal(minValue, min.Number);
-            }
-
-            [Fact]
-            public void MaxBy_ShouldReturnMaxObject_IfIComparable()
-            {
-                var items = new List<Item>(Enumerable.Range(0, 10).Select(x => new Item(x)));
-
-                var a = items.Max(x => x);
-                var b = items.MaxBy(x => x);
-
-                Assert.Same(a, b);
-            }
-
-            [Fact]
-            public void MaxBy_ShouldReturnCorrectReference()
-            {
-                var secondItem = new Item(3);
-                var items = new List<Item>
-                {
-                    new Item(3),
-                    new Item(2),
-                    secondItem
-                };
-
-                Assert.NotSame(secondItem, items.MaxBy(x => x.Number));
-            }
+            // Assert.
+            maxItem.Should().NotBeSameAs(secondItem);
         }
     }
 }

@@ -3,28 +3,27 @@ using Depra.Common.System.Disposable;
 using NSubstitute;
 using Xunit;
 
-namespace Depra.Common.UnitTests.System.Disposables
+namespace Depra.Common.UnitTests.System.Disposables;
+
+public sealed class CompactDisposableTests
 {
-    public sealed class CompactDisposableTests
+    [Fact]
+    public void Constructor_ShouldCallInitialize()
     {
-        [Fact]
-        public void Constructor_ShouldCallInitialize()
-        {
-            var initialize = Substitute.For<Action>();
+        var initialize = Substitute.For<Action>();
 
-            new CompactDisposable(initialize, () => { });
+        var _ = new CompactDisposable(initialize, () => { });
 
-            initialize.Received(1).Invoke();
-        }
+        initialize.Received(1).Invoke();
+    }
 
-        [Fact]
-        public void Dispose_ShouldCallDispose()
-        {
-            var dispose = Substitute.For<Action>();
+    [Fact]
+    public void Dispose_ShouldCallDispose()
+    {
+        var dispose = Substitute.For<Action>();
 
-            using (new CompactDisposable(() => { }, dispose)) { }
+        using (new CompactDisposable(() => { }, dispose)) { }
 
-            dispose.Received(1).Invoke();
-        }
+        dispose.Received(1).Invoke();
     }
 }

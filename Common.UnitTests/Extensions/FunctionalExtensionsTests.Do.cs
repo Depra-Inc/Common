@@ -3,24 +3,23 @@ using Depra.Common.Extensions;
 using NSubstitute;
 using Xunit;
 
-namespace Depra.Common.UnitTests.Extensions
+namespace Depra.Common.UnitTests.Extensions;
+
+public sealed partial class FunctionalExtensionsTests
 {
-    public sealed partial class FunctionalExtensionsTests
+    public class Do
     {
-        public class Do
+        [Fact]
+        public void Do_ShouldApplyAction()
         {
-            [Fact]
-            public void Do_ShouldApplyAction()
-            {
-                var action = Substitute.For<Action<string>>();
+            var action = Substitute.For<Action<string>>();
 
-                "".Do(action);
+            "".Do(action);
 
-                action.Received(1).Invoke("");
-            }
-            
-            [Fact]
-            public void Do_ShouldPropagate_IfActionIsNull() => "".Do(null);
+            action.Received(1).Invoke("");
         }
+            
+        [Fact]
+        public void Do_ShouldPropagate_IfActionIsNull() => "".Do(null);
     }
 }

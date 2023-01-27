@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Depra.Common.Extensions.Collections
@@ -9,6 +10,7 @@ namespace Depra.Common.Extensions.Collections
         /// Returns specified value if source is null/empty/else same.
         /// <remarks>Possible multiple enumeration!</remarks>
         /// </summary>
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public static IEnumerable<T> Or<T>(this IEnumerable<T> self, IEnumerable<T> or) =>
             self.IsNullOrEmpty() ? or : self;
 

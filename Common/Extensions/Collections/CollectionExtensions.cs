@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using static Depra.Common.Guards.Guard;
 
 namespace Depra.Common.Extensions.Collections
@@ -24,6 +25,7 @@ namespace Depra.Common.Extensions.Collections
         /// <param name="other">The collection whose elements should be added to the end of <paramref name="self"/>.</param>
         /// <typeparam name="T">Type of elements in <see cref="ICollection{T}"/>.</typeparam>
         /// <exception cref="ArgumentNullException"><paramref name="self"/> or <paramref name="other"/> is null.</exception>
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
         public static void AddRange<T>(this ICollection<T> self, IEnumerable<T> other)
         {
             Ensure(that: self).NotNull();
