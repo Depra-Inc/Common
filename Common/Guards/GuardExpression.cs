@@ -14,7 +14,7 @@ namespace Depra.Common.Guards
         public void NotNull() =>
             NotNull(because: "Specified value should be not null.");
         public void NotNull(string because) =>
-            When(_this == null, @throw: () => new ArgumentNullException("", because));
+            When(_this == null, @throw: () => new ArgumentNullException(string.Empty, because));
 
         public void Null() =>
             Null(because: $"[ {_this} ] should be null.");
@@ -64,8 +64,8 @@ namespace Depra.Common.Guards
 
         private static bool Equals(T x, T y) => EqualityComparer<T>.Default.Equals(x, y);
 
-        private static int Compared(T x, T y) => x is IComparable<T> c
-            ? c.CompareTo(y)
+        private static int Compared(T x, T y) => x is IComparable<T> comparable
+            ? comparable.CompareTo(y)
             : throw new ArgumentException(
                 $"[ {x.GetType().PrettyName()} ] should implement [ {typeof(IComparable<T>).PrettyName()} ].");
     }

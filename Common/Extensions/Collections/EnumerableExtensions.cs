@@ -12,36 +12,6 @@ namespace Depra.Common.Extensions.Collections
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Returns the first element of the sequence that satisfies a condition of <paramref name="predicate"/>.
-        /// </summary>
-        /// <param name="self">This object.</param>
-        /// <param name="predicate">A function that represents a condition, which will be applied to elements of sequence.</param>
-        /// <typeparam name="T">Type of elements in sequence.</typeparam>
-        /// <returns>First element of the sequence that satisfies a condition.</returns>
-        public static T One<T>(this IEnumerable<T> self, Func<T, bool> predicate) =>
-            self.FirstOrDefault(predicate);
-
-        /// <summary>
-        /// Returns the first element of the sequence that satisfies a condition or throws exception with specified message.
-        /// </summary>
-        /// <param name="self">This object.</param>
-        /// <param name="predicate">A function that represents a condition, which will be applied to elements of sequence.</param>
-        /// <param name="orThrow">Message that will be used to throw exception if no element will satisfy a condition.</param>
-        /// <typeparam name="T">Type of elements in sequence.</typeparam>
-        /// <returns>First element of the sequence that satisfies a condition.</returns>
-        /// <exception cref="InvalidOperationException">No element satisfies the condition in <paramref name="predicate"/>.</exception>
-        public static T One<T>(this IEnumerable<T> self, Func<T, bool> predicate, string orThrow)
-        {
-            var item = self.One(predicate);
-            if (item == null && orThrow != null)
-            {
-                throw new InvalidOperationException(orThrow);
-            }
-
-            return item;
-        }
-
-        /// <summary>
         /// Returns the second element of the sequence.
         /// </summary>
         /// <param name="self">This object.</param>
@@ -157,72 +127,6 @@ namespace Depra.Common.Extensions.Collections
             }
         }
 
-        /// <summary>
-        /// Takes first object from <see cref="IEnumerable{T}"/> that has minimum value, provided by <paramref name="selector"/>.
-        /// </summary>
-        /// <typeparam name="T">Type of elements in <see cref="IEnumerable{T}"/></typeparam>
-        /// <typeparam name="TMin">Type of <see cref="IComparable{T}"/> element, that will be used for search.</typeparam>
-        /// <param name="self">This object.</param>
-        /// <param name="selector">Selector of <see cref="IComparable{T}"/> elements, that will be used for search.</param>
-        /// <returns>First object, that has minimum value, provided by <paramref name="selector"/>.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="self"/> is null.</exception>
-        public static T MinBy<T, TMin>(this IEnumerable<T> self, Func<T, TMin> selector) where TMin : IComparable<TMin>
-        {
-            Ensure(self).NotNull();
-            Ensure(selector).NotNull();
-
-            var min = default(T);
-            var first = true;
-
-            foreach (var item in self)
-            {
-                if (first)
-                {
-                    min = item;
-                    first = false;
-                }
-                else if (selector(item).CompareTo(selector(min)) < 0)
-                {
-                    min = item;
-                }
-            }
-
-            return min;
-        }
-
-        /// <summary>
-        /// Takes first object from <see cref="IEnumerable{T}"/> that has maximum value, provided by <paramref name="selector"/>.
-        /// </summary>
-        /// <typeparam name="T">Type of elements in <see cref="IEnumerable{T}"/></typeparam>
-        /// <typeparam name="TMax">Type of <see cref="IComparable{T}"/> element, that will be used for search.</typeparam>
-        /// <param name="self">This object.</param>
-        /// <param name="selector">Selector of <see cref="IComparable{T}"/> elements, that will be used for search.</param>
-        /// <returns>First object, that has maximum value, provided by <paramref name="selector"/>.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="self"/> is <code>null</code>.</exception>
-        public static T MaxBy<T, TMax>(this IEnumerable<T> self, Func<T, TMax> selector) where TMax : IComparable<TMax>
-        {
-            Ensure(self).NotNull();
-            Ensure(selector).NotNull();
-
-            var max = default(T);
-            var first = true;
-
-            foreach (var item in self)
-            {
-                if (first)
-                {
-                    max = item;
-                    first = false;
-                }
-                else if (selector(item).CompareTo(selector(max)) > 0)
-                {
-                    max = item;
-                }
-            }
-
-            return max;
-        }
-
         public static T2 FirstOfType<T1, T2>(this IEnumerable<T1> self)
         {
             T2 result = default;
@@ -266,22 +170,5 @@ namespace Depra.Common.Extensions.Collections
         /// <returns>An <see cref="IEnumerable{T}"/> that contains distinct elements from the source sequence.</returns>
         public static IEnumerable<T> Distinct<T>(this IEnumerable<T> self, Func<T, T, bool> comparer) =>
             self.Distinct(new FuncEqualityComparer<T>(comparer));
-
-        /// <summary>
-        /// Concatenates the members of a sequence, using specified <see cref="string"/> as separator.
-        /// </summary>
-        /// <param name="self">This object.</param>
-        /// <param name="with">String that will be inserted between items of <paramref name="self"/>.</param>
-        /// <typeparam name="T">Type of elements in sequence.</typeparam>
-        /// <returns>Items of <paramref name="self"/> converted to string and separated with <paramref name="with"/>.</returns>
-        public static string Separated<T>(this IEnumerable<T> self, string with) => string.Join(with, self);
-
-        /// <summary>
-        /// Concatenates the members of a sequence, using specified <see cref="string"/> as separator.
-        /// </summary>
-        /// <param name="self">This object.</param>
-        /// <param name="with">String that will be inserted between items of <paramref name="self"/>.</param>
-        /// <returns>Items of <paramref name="self"/> converted to string and separated with <paramref name="with"/>.</returns>
-        public static string Separated(this IEnumerable<string> self, string with) => string.Join(with, self);
     }
 }
