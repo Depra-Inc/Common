@@ -11,11 +11,14 @@ public class IsNumericBenchmarks
     private object ObjIntValue => _intValue;
 
     [Benchmark(Baseline = true)]
-    public bool IsNumeric() => _intValue.IsNumeric();
+    public bool IsNumeric() => 
+        _intValue.IsNumeric();
 
     [Benchmark]
-    public void IsNumericAtRuntime() => ObjIntValue.IsNumericAtRuntime();
+    public void IsNumericAtRuntime() =>
+        ObjIntValue.IsNumericAtRuntime();
 
     [Benchmark]
-    public void IsNullableNumeric() => _nullableLongValue.IsNullableNumeric();
+    public void IsNullableNumeric() => 
+        _nullableLongValue.IsNullableNumeric();
 }
